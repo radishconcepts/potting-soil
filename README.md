@@ -15,7 +15,7 @@ Add the package to your `composer.json` file:
 # Creating an Custom Post Type
 
 For this you can create a new file in your theme or plugin in the includes/classes/PostTypes folder. The file should be
-named after the post type you want to create. For example: `includes/classes/PostTypes/Book.php` is for the post type
+named after the post type you want to create. For example: `includes/classes/PostTypes/Seedling.php` is for the post type
 book.
 
 ```php
@@ -26,13 +26,13 @@ namespace MyPlugin\PostTypes;
 use RadishConcepts\PottingSoil\PostTypes\PostType;
 use RadishConcepts\PottingSoil\Plugin;
 
-class Book extends PostType {
+class Seedling extends PostType {
 
-    protected string $post_type = 'book';
+    protected string $post_type = 'seedling';
 
     public function setup(): void {
-        $this->singular_name = __( 'Book', Plugin::textdomain() );
-        $this->plural_name   = __( 'Books', Plugin::textdomain() );
+        $this->singular_name = __( 'Seedling', Plugin::textdomain() );
+        $this->plural_name   = __( 'Seedlings', Plugin::textdomain() );
 
         // You can overwrite default custom post type arguments by using $this->{property_name} = {value}.
     }
@@ -43,5 +43,5 @@ After creating the post type you need to register the custom post type by adding
 or theme file:
 
 ```php
-MyPlugin\PostTypes\Book::register();
+MyPlugin\PostTypes\Seedling::register();
 ```
