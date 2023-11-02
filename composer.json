@@ -1,7 +1,6 @@
 {
     "name": "radishconcepts/potting-soil",
     "description": "Radishes need soil, so here is potting soil. The base for your WordPress projects.",
-    "type": "library",
     "autoload": {
         "psr-4": {
             "RadishConcepts\\PottingSoil\\": "src/"
@@ -13,6 +12,9 @@
             "email": "support@radishconcepts.com"
         }
     ],
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require-dev": {
         "deployer/deployer": "^7.3",
         "symfony/process": "^6.0",
