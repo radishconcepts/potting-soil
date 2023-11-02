@@ -1,6 +1,7 @@
 {
     "name": "radishconcepts/potting-soil",
-    "description": "Radishes need soil, so here is potting soil. The base for your WordPress projects.",
+    "description": "Radishes need soil, so here is potting soil. The base for your WordPress projects.",v
+    "type": "package",
     "autoload": {
         "psr-4": {
             "RadishConcepts\\PottingSoil\\": "src/"
