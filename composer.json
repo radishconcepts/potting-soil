@@ -1,21 +1,18 @@
 {
     "name": "radishconcepts/potting-soil",
     "description": "Radishes need soil, so here is potting soil. The base for your WordPress projects.",
-    "type": "package",
-    "autoload": {
-        "psr-4": {
-            "RadishConcepts\\PottingSoil\\": "includes/classes/"
-        }
-    },
+    "type": "library",
     "authors": [
         {
             "name": "Radish Concepts",
             "email": "support@radishconcepts.com"
         }
     ],
-    "version": "1.0.0",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "RadishConcepts\\PottingSoil\\": "includes/classes/"
+        }
+    },
     "require": {
         "symfony/var-dumper": "^6.0"
     }
