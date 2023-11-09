@@ -16,7 +16,8 @@ use RuntimeException;
  * @property-write boolean $hierarchical
  * @property-write boolean $exclude_from_search
  * @property-write boolean $publicly_queryable
- * @property-write boolean|string $show_ui
+ * @property-write boolean $show_ui
+ * @property-write boolean|string $show_in_menu
  * @property-write boolean $show_in_nav_menus
  * @property-write boolean $show_in_admin_bar
  * @property-write boolean $show_in_rest
