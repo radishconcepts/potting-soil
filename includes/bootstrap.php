@@ -8,7 +8,7 @@ class Bootstrap {
 	}
 
 	public function setup(): void {
-		load_textdomain( 'potting-soil', self::path() . 'languages/potting-soil-' . get_locale() . '.mo' );
+		load_textdomain( 'potting-soil', self::path() . 'languages/' . get_locale() . '.mo' );
 	}
 
 	public static function path(): string {

@@ -11,12 +11,6 @@
     "autoload": {
         "psr-4": {
             "RadishConcepts\\PottingSoil\\": "includes/classes/"
-        },
-        "files": [
-            "includes/bootstrap.php"
-        ]
-    },
-    "require": {
-        "symfony/var-dumper": "^6.0"
+        }
     }
 }
