@@ -2,7 +2,6 @@
 
 namespace RadishConcepts\PottingSoil\PostTypes;
 
-use RadishConcepts\PottingSoil\Plugin;
 use RadishConcepts\PottingSoil\Traits\ArgsProperties;
 use RuntimeException;
 
