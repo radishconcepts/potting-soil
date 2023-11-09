@@ -52,6 +52,20 @@ abstract class PostType implements PostTypeInterface {
 	protected string $post_type;
 
 	/**
+	 * The post type name in plural format.
+	 *
+	 * @var string
+	 */
+	private string $name;
+
+	/**
+	 * The post type name in singular format.
+	 *
+	 * @var string
+	 */
+	private string $singular_name;
+
+	/**
 	 * PostType constructor.
 	 */
 	private function __construct() {
@@ -63,7 +77,7 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return void
 	 */
-	public function init(): void {
+	private function init(): void {
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
 			throw new RuntimeException( 'The method "setup" must be implemented.' );
@@ -111,39 +125,39 @@ abstract class PostType implements PostTypeInterface {
 	 */
 	private function labels(): array {
 		return [
-			'name'                      => $this->plural_name,
+			'name'                      => $this->name,
 			'singular_name'             => $this->singular_name,
-			'add_new'                   => __( 'Add new', Plugin::textdomain() ),
-			'add_new_item'              => sprintf( __( 'Add new %s', Plugin::textdomain() ), $this->singular_name ),
-			'edit_item'                 => sprintf( __( 'Edit %s', Plugin::textdomain() ), $this->singular_name ),
-			'new_item'                  => sprintf( __( 'New %s', Plugin::textdomain() ), $this->singular_name ),
-			'view_item'                 => sprintf( __( 'View %s', Plugin::textdomain() ), $this->singular_name ),
-			'view_items'                => sprintf( __( 'View %s',  ), Plugin::textdomain() ),
-			'search_items'              => sprintf( __( 'Search %s', Plugin::textdomain() ), $this->plural_name ),
-			'not_found'                 => sprintf( __( 'No %s found', Plugin::textdomain() ), $this->plural_name ),
-			'not_found_in_trash'        => sprintf( __( 'No %s found in trash', Plugin::textdomain() ), $this->plural_name ),
-			'parent_item_colon'         => sprintf( __( 'Parent %s:', Plugin::textdomain() ), $this->singular_name ),
-			'all_items'                 => sprintf( __( 'All %s', Plugin::textdomain() ), $this->plural_name ),
-			'archives'                  => sprintf( __( '%s archives', Plugin::textdomain() ), $this->singular_name ),
-			'attributes'                => sprintf( __( '%s attributes', Plugin::textdomain() ), $this->singular_name ),
-			'insert_into_item'          => sprintf( __( 'Insert into %s', Plugin::textdomain() ), $this->singular_name ),
-			'uploaded_to_this_item'     => sprintf( __( 'Uploaded to this %s', Plugin::textdomain() ), $this->singular_name ),
-			'featured_image'            => sprintf( __( '%s image', Plugin::textdomain() ), $this->singular_name ),
-			'set_featured_image'        => sprintf( __( 'Set %s image', Plugin::textdomain() ), $this->singular_name ),
-			'remove_featured_image'     => sprintf( __( 'Remove %s image', Plugin::textdomain() ), $this->singular_name ),
-			'use_featured_image'        => sprintf( __( 'Use as %s image', Plugin::textdomain() ), $this->singular_name ),
-			'menu_name'                 => $this->plural_name,
-			'filter_items_list'         => sprintf( __( 'Filter %s list', Plugin::textdomain() ), $this->plural_name ),
-			'filter_ny_date'            => sprintf( __( 'Filter by %s date', Plugin::textdomain() ), $this->singular_name ),
-			'items_list_navigation'     => sprintf( __( '%s list navigation', Plugin::textdomain() ), $this->plural_name ),
-			'items_list'                => sprintf( __( '%s list', Plugin::textdomain() ), $this->plural_name ),
-			'item_published'            => sprintf( __( '%s published', Plugin::textdomain() ), $this->singular_name ),
-			'item_published_privately'  => sprintf( __( '%s published privately', Plugin::textdomain() ), $this->singular_name ),
-			'item_reverted_to_draft'    => sprintf( __( '%s reverted to draft', Plugin::textdomain() ), $this->singular_name ),
+			'add_new'                   => __( 'Add new', 'potting-soil' ),
+			'add_new_item'              => sprintf( __( 'Add new %s', 'potting-soil' ), $this->singular_name ),
+			'edit_item'                 => sprintf( __( 'Edit %s', 'potting-soil' ), $this->singular_name ),
+			'new_item'                  => sprintf( __( 'New %s', 'potting-soil' ), $this->singular_name ),
+			'view_item'                 => sprintf( __( 'View %s', 'potting-soil' ), $this->singular_name ),
+			'view_items'                => sprintf( __( 'View %s',  ), 'potting-soil' ),
+			'search_items'              => sprintf( __( 'Search %s', 'potting-soil' ), $this->name ),
+			'not_found'                 => sprintf( __( 'No %s found', 'potting-soil' ), $this->name ),
+			'not_found_in_trash'        => sprintf( __( 'No %s found in trash', 'potting-soil' ), $this->name ),
+			'parent_item_colon'         => sprintf( __( 'Parent %s:', 'potting-soil' ), $this->singular_name ),
+			'all_items'                 => sprintf( __( 'All %s', 'potting-soil' ), $this->name ),
+			'archives'                  => sprintf( __( '%s archives', 'potting-soil' ), $this->singular_name ),
+			'attributes'                => sprintf( __( '%s attributes', 'potting-soil' ), $this->singular_name ),
+			'insert_into_item'          => sprintf( __( 'Insert into %s', 'potting-soil' ), $this->singular_name ),
+			'uploaded_to_this_item'     => sprintf( __( 'Uploaded to this %s', 'potting-soil' ), $this->singular_name ),
+			'featured_image'            => sprintf( __( '%s image', 'potting-soil' ), $this->singular_name ),
+			'set_featured_image'        => sprintf( __( 'Set %s image', 'potting-soil' ), $this->singular_name ),
+			'remove_featured_image'     => sprintf( __( 'Remove %s image', 'potting-soil' ), $this->singular_name ),
+			'use_featured_image'        => sprintf( __( 'Use as %s image', 'potting-soil' ), $this->singular_name ),
+			'menu_name'                 => $this->name,
+			'filter_items_list'         => sprintf( __( 'Filter %s list', 'potting-soil' ), $this->name ),
+			'filter_ny_date'            => sprintf( __( 'Filter by %s date', 'potting-soil' ), $this->singular_name ),
+			'items_list_navigation'     => sprintf( __( '%s list navigation', 'potting-soil' ), $this->name ),
+			'items_list'                => sprintf( __( '%s list', 'potting-soil' ), $this->name ),
+			'item_published'            => sprintf( __( '%s published', 'potting-soil' ), $this->singular_name ),
+			'item_published_privately'  => sprintf( __( '%s published privately', 'potting-soil' ), $this->singular_name ),
+			'item_reverted_to_draft'    => sprintf( __( '%s reverted to draft', 'potting-soil' ), $this->singular_name ),
 			'item_scheduled'            => sprintf( __( '%s scheduled', $this->singular_name ), $this->singular_name ),
-			'item_updated'              => sprintf( __( '%s updated', Plugin::textdomain() ), $this->singular_name ),
-			'item_link' 		        => sprintf( __( '%s link', Plugin::textdomain() ), $this->singular_name ),
-			'item_link_description'     => sprintf( __( '%s link description', Plugin::textdomain() ), $this->singular_name ),
+			'item_updated'              => sprintf( __( '%s updated', 'potting-soil' ), $this->singular_name ),
+			'item_link' 		        => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
+			'item_link_description'     => sprintf( __( '%s link description', 'potting-soil' ), $this->singular_name ),
 		];
 	}
 }

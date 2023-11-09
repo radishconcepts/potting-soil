@@ -54,6 +54,20 @@ abstract class Taxonomy implements TaxonomyInterface {
 	protected string|array $post_types;
 
 	/**
+	 * The taxonomy name in plural format.
+	 *
+	 * @var string
+	 */
+	private string $name;
+
+	/**
+	 * The taxonomy name in singular format.
+	 *
+	 * @var string
+	 */
+	private string $singular_name;
+
+	/**
 	 * Taxonomy constructor.
 	 */
 	private function __construct() {
@@ -116,34 +130,34 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 */
 	private function labels(): array {
 		return [
-			'name'                       => $this->plural_name,
-			'singular_name'              => $this->singquar_name,
-			'search_items'               => sprintf( __( 'Search %s', 'potting-soil' ), $this->plural_name ),
-			'popular_items'              => sprintf( __( 'Popular %s', 'potting-soil' ), $this->plural_name ),
-			'all_items'                  => sprintf( __( 'All %s', 'potting-soil' ), $this->plural_name ),
-			'parent_item'                => sprintf( __( 'Parent %s', 'potting-soil' ), $this->singquar_name ),
-			'parent_item_colon'          => sprintf( __( 'Parent %s:', 'potting-soil' ), $this->singquar_name ),
-			'name_field_description'     => sprintf( __( 'The name of the %s.', 'potting-soil' ), $this->singquar_name ),
-			'slug_field_description'     => sprintf( __( 'The slug of the %s.', 'potting-soil' ), $this->singquar_name ),
-			'parent_field_description'   => sprintf( __( 'The parent of the %s.', 'potting-soil' ), $this->singquar_name ),
-			'desc_field_description'     => sprintf( __( 'The description of the %s.', 'potting-soil' ), $this->singquar_name ),
-			'edit_item'                  => sprintf( __( 'Edit %s', 'potting-soil' ), $this->singquar_name ),
-			'view_item'                  => sprintf( __( 'View %s', 'potting-soil' ), $this->singquar_name ),
-			'update_item'                => sprintf( __( 'Update %s', 'potting-soil' ), $this->singquar_name ),
-			'add_new_item'               => sprintf( __( 'Add new %s', 'potting-soil' ), $this->singquar_name ),
-			'new_item_name'              => sprintf( __( 'New %s name', 'potting-soil' ), $this->singquar_name ),
-			'separate_items_with_commas' => sprintf( __( 'Separate %s with commas', 'potting-soil' ), $this->plural_name ),
-			'add_or_remove_items'        => sprintf( __( 'Add or remove %s', 'potting-soil' ), $this->plural_name ),
-			'choose_from_most_used'      => sprintf( __( 'Choose from most used %s', 'potting-soil' ), $this->plural_name ),
-			'not_found'                  => sprintf( __( 'No %s found', 'potting-soil' ), $this->plural_name ),
-			'no_terms'                   => sprintf( __( 'No %s', 'potting-soil' ), $this->plural_name ),
-			'filter_by_item'             => sprintf( __( 'Filter by %s', 'potting-soil' ), $this->singquar_name ),
-			'items_list_navigation'      => sprintf( __( '%s list navigation', 'potting-soil' ), $this->plural_name ),
-			'items_list'                 => sprintf( __( '%s list', 'potting-soil' ), $this->plural_name ),
-			'most_used'                  => sprintf( __( 'Most used', 'potting-soil' ), $this->plural_name ),
-			'back_to_items'              => sprintf( __( '← Back to %s', 'potting-soil' ), $this->plural_name ),
-			'item_link'                  => sprintf( __( '%s link', 'potting-soil' ), $this->singquar_name ),
-			'item_link_description'      => sprintf( __( 'A link to a %s.', 'potting-soil' ), $this->singquar_name ),
+			'name'                       => $this->name,
+			'singular_name'              => $this->singular_name,
+			'search_items'               => sprintf( __( 'Search %s', 'potting-soil' ), $this->name ),
+			'popular_items'              => sprintf( __( 'Popular %s', 'potting-soil' ), $this->name ),
+			'all_items'                  => sprintf( __( 'All %s', 'potting-soil' ), $this->name ),
+			'parent_item'                => sprintf( __( 'Parent %s', 'potting-soil' ), $this->singular_name ),
+			'parent_item_colon'          => sprintf( __( 'Parent %s:', 'potting-soil' ), $this->singular_name ),
+			'name_field_description'     => sprintf( __( 'The name of the %s.', 'potting-soil' ), $this->singular_name ),
+			'slug_field_description'     => sprintf( __( 'The slug of the %s.', 'potting-soil' ), $this->singular_name ),
+			'parent_field_description'   => sprintf( __( 'The parent of the %s.', 'potting-soil' ), $this->singular_name ),
+			'desc_field_description'     => sprintf( __( 'The description of the %s.', 'potting-soil' ), $this->singular_name ),
+			'edit_item'                  => sprintf( __( 'Edit %s', 'potting-soil' ), $this->singular_name ),
+			'view_item'                  => sprintf( __( 'View %s', 'potting-soil' ), $this->singular_name ),
+			'update_item'                => sprintf( __( 'Update %s', 'potting-soil' ), $this->singular_name ),
+			'add_new_item'               => sprintf( __( 'Add new %s', 'potting-soil' ), $this->singular_name ),
+			'new_item_name'              => sprintf( __( 'New %s name', 'potting-soil' ), $this->singular_name ),
+			'separate_items_with_commas' => sprintf( __( 'Separate %s with commas', 'potting-soil' ), $this->name ),
+			'add_or_remove_items'        => sprintf( __( 'Add or remove %s', 'potting-soil' ), $this->name ),
+			'choose_from_most_used'      => sprintf( __( 'Choose from most used %s', 'potting-soil' ), $this->name ),
+			'not_found'                  => sprintf( __( 'No %s found', 'potting-soil' ), $this->name ),
+			'no_terms'                   => sprintf( __( 'No %s', 'potting-soil' ), $this->name ),
+			'filter_by_item'             => sprintf( __( 'Filter by %s', 'potting-soil' ), $this->singular_name ),
+			'items_list_navigation'      => sprintf( __( '%s list navigation', 'potting-soil' ), $this->name ),
+			'items_list'                 => sprintf( __( '%s list', 'potting-soil' ), $this->name ),
+			'most_used'                  => sprintf( __( 'Most used', 'potting-soil' ), $this->name ),
+			'back_to_items'              => sprintf( __( '← Back to %s', 'potting-soil' ), $this->name ),
+			'item_link'                  => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
+			'item_link_description'      => sprintf( __( 'A link to a %s.', 'potting-soil' ), $this->singular_name ),
 		];
 	}
 }
