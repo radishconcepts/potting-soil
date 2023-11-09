@@ -3,7 +3,7 @@
 namespace RadishConcepts\PottingSoil;
 
 class Bootstrap {
-	private function __construct() {
+	public function __construct() {
 		add_action( 'init', [ $this, 'init' ] );
 	}
 

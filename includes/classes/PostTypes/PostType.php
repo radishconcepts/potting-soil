@@ -77,7 +77,7 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return void
 	 */
-	private function init(): void {
+	public function init(): void {
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
 			throw new RuntimeException( 'The method "setup" must be implemented.' );
