@@ -58,14 +58,14 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @var string
 	 */
-	private string $name;
+	protected string $name;
 
 	/**
 	 * The taxonomy name in singular format.
 	 *
 	 * @var string
 	 */
-	private string $singular_name;
+	protected string $singular_name;
 
 	/**
 	 * Taxonomy constructor.

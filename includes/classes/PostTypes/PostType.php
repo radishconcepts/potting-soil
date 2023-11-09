@@ -57,14 +57,14 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @var string
 	 */
-	private string $name;
+	protected string $name;
 
 	/**
 	 * The post type name in singular format.
 	 *
 	 * @var string
 	 */
-	private string $singular_name;
+	protected string $singular_name;
 
 	/**
 	 * PostType constructor.
