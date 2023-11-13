@@ -144,6 +144,15 @@ abstract class PostType implements PostTypeInterface {
 	}
 
 	/**
+	 * Get the internal post type name.
+	 *
+	 * @return string
+	 */
+	public static function get_post_type(): string {
+		return self::$instances[ static::class ]->post_type;
+	}
+
+	/**
 	 * Get text label for a specific key.
 	 *
 	 * @param $key
@@ -160,10 +169,7 @@ abstract class PostType implements PostTypeInterface {
 	 * @return void
 	 */
 	public static function register(): void {
-
-		$class = static::class;
-
-		self::$instances[ $class ] = new $class();
+		self::$instances[ static::class ] = new static();
 	}
 
 	/**
@@ -172,9 +178,6 @@ abstract class PostType implements PostTypeInterface {
 	 * @return self
 	 */
 	public static function get_instance(): self {
-
-		$class = static::class;
-
-		return self::$instances[ $class ];
+		return self::$instances[ static::class ];
 	}
 }

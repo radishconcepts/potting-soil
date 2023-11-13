@@ -144,6 +144,15 @@ abstract class Taxonomy implements TaxonomyInterface {
 	}
 
 	/**
+	 * Get the internal taxonomy name.
+	 *
+	 * @return string
+	 */
+	public static function get_taxonomy(): string {
+		return self::$instances[ static::class ]->taxonomy;
+	}
+
+	/**
 	 * Get text label for a specific key.
 	 *
 	 * @param $key
