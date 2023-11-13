@@ -45,7 +45,7 @@ abstract class PostType implements PostTypeInterface {
 	private static array $instances = [];
 
 	/**
-	 * The post type slug.
+	 * The internal post type name.
 	 *
 	 * @var string
 	 */
@@ -101,19 +101,6 @@ abstract class PostType implements PostTypeInterface {
 	}
 
 	/**
-	 * Get text label for a specific key.
-	 *
-	 * @param $key
-	 *
-	 * @return string
-	 */
-	public function label( $key ): string {
-		$labels = $this->labels();
-
-		return $labels[ $key ] ?? '';
-	}
-
-	/**
 	 * Return the labels for the post type.
 	 *
 	 * @return array
@@ -154,6 +141,17 @@ abstract class PostType implements PostTypeInterface {
 			'item_link' 		        => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
 			'item_link_description'     => sprintf( __( '%s link description', 'potting-soil' ), $this->singular_name ),
 		];
+	}
+
+	/**
+	 * Get text label for a specific key.
+	 *
+	 * @param $key
+	 *
+	 * @return string
+	 */
+	public static function get_label( $key ): string {
+		return self::$instances[ static::class ]->labels()[ $key ] ?? '';
 	}
 
 	/**

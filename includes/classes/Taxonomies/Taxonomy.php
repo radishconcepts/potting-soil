@@ -40,7 +40,7 @@ abstract class Taxonomy implements TaxonomyInterface {
 	private static array $instances = [];
 
 	/**
-	 * The taxonomy slug.
+	 * The internal taxonomy name.
 	 *
 	 * @var string
 	 */
@@ -105,13 +105,6 @@ abstract class Taxonomy implements TaxonomyInterface {
 		register_taxonomy( $this->taxonomy, $post_types, $args );
 	}
 
-
-	public function label( $key ): string {
-		$labels = $this->labels();
-
-		return $labels[ $key ] ?? '';
-	}
-
 	/**
 	 * Return the taxonomy labels.
 	 *
@@ -148,6 +141,17 @@ abstract class Taxonomy implements TaxonomyInterface {
 			'item_link'                  => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
 			'item_link_description'      => sprintf( __( 'A link to a %s.', 'potting-soil' ), $this->singular_name ),
 		];
+	}
+
+	/**
+	 * Get text label for a specific key.
+	 *
+	 * @param $key
+	 *
+	 * @return string
+	 */
+	public static function get_label( $key ): string {
+		return self::$instances[ static::class ]->labels()[ $key ] ?? '';
 	}
 
 	/**
