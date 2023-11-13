@@ -101,27 +101,16 @@ abstract class PostType implements PostTypeInterface {
 	}
 
 	/**
-	 * Register the post type.
+	 * Get text label for a specific key.
 	 *
-	 * @return void
-	 */
-	public static function register(): void {
-
-		$class = static::class;
-
-		self::$instances[ $class ] = new $class();
-	}
-
-	/**
-	 * Get the post type instance.
+	 * @param $key
 	 *
-	 * @return self
+	 * @return string
 	 */
-	public static function get_instance(): self {
+	public function label( $key ): string {
+		$labels = $this->labels();
 
-		$class = static::class;
-
-		return self::$instances[ $class ];
+		return $labels[ $key ] ?? '';
 	}
 
 	/**
@@ -165,5 +154,29 @@ abstract class PostType implements PostTypeInterface {
 			'item_link' 		        => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
 			'item_link_description'     => sprintf( __( '%s link description', 'potting-soil' ), $this->singular_name ),
 		];
+	}
+
+	/**
+	 * Register the post type.
+	 *
+	 * @return void
+	 */
+	public static function register(): void {
+
+		$class = static::class;
+
+		self::$instances[ $class ] = new $class();
+	}
+
+	/**
+	 * Get the post type instance.
+	 *
+	 * @return self
+	 */
+	public static function get_instance(): self {
+
+		$class = static::class;
+
+		return self::$instances[ $class ];
 	}
 }

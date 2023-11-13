@@ -105,28 +105,11 @@ abstract class Taxonomy implements TaxonomyInterface {
 		register_taxonomy( $this->taxonomy, $post_types, $args );
 	}
 
-	/**
-	 * Register the taxonomy.
-	 *
-	 * @return void
-	 */
-	public static function register(): void {
 
-		$class = static::class;
+	public function label( $key ): string {
+		$labels = $this->labels();
 
-		self::$instances[ $class ] = new $class();
-	}
-
-	/**
-	 * Get the taxonomy instance.
-	 *
-	 * @return self
-	 */
-	public static function get_instance(): self {
-
-		$class = static::class;
-
-		return self::$instances[ $class ];
+		return $labels[ $key ] ?? '';
 	}
 
 	/**
@@ -165,5 +148,29 @@ abstract class Taxonomy implements TaxonomyInterface {
 			'item_link'                  => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
 			'item_link_description'      => sprintf( __( 'A link to a %s.', 'potting-soil' ), $this->singular_name ),
 		];
+	}
+
+	/**
+	 * Register the taxonomy.
+	 *
+	 * @return void
+	 */
+	public static function register(): void {
+
+		$class = static::class;
+
+		self::$instances[ $class ] = new $class();
+	}
+
+	/**
+	 * Get the taxonomy instance.
+	 *
+	 * @return self
+	 */
+	public static function get_instance(): self {
+
+		$class = static::class;
+
+		return self::$instances[ $class ];
 	}
 }
