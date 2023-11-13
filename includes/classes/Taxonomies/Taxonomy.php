@@ -37,7 +37,7 @@ use RuntimeException;
 abstract class Taxonomy implements TaxonomyInterface {
 	use ArgsProperties;
 
-	private static self $instance;
+	private static array $instances = [];
 
 	/**
 	 * The taxonomy slug.
@@ -111,7 +111,10 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 * @return void
 	 */
 	public static function register(): void {
-		self::$instance = new static();
+
+		$class = static::class;
+
+		self::$instances[ $class ] = new $class();
 	}
 
 	/**
@@ -120,7 +123,10 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 * @return self
 	 */
 	public static function get_instance(): self {
-		return self::$instance;
+
+		$class = static::class;
+
+		return self::$instances[ $class ];
 	}
 
 	/**

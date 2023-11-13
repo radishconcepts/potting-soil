@@ -42,7 +42,7 @@ use RuntimeException;
 abstract class PostType implements PostTypeInterface {
 	use ArgsProperties;
 
-	private static self $instance;
+	private static array $instances = [];
 
 	/**
 	 * The post type slug.
@@ -106,7 +106,10 @@ abstract class PostType implements PostTypeInterface {
 	 * @return void
 	 */
 	public static function register(): void {
-		self::$instance = new static();
+
+		$class = static::class;
+
+		self::$instances[ $class ] = new $class();
 	}
 
 	/**
@@ -115,7 +118,10 @@ abstract class PostType implements PostTypeInterface {
 	 * @return self
 	 */
 	public static function get_instance(): self {
-		return self::$instance;
+
+		$class = static::class;
+
+		return self::$instances[ $class ];
 	}
 
 	/**
