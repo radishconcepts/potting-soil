@@ -169,10 +169,7 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 * @return void
 	 */
 	public static function register(): void {
-
-		$class = static::class;
-
-		self::$instances[ $class ] = new $class();
+		self::$instances[ static::class ] = new static();
 	}
 
 	/**
@@ -181,9 +178,6 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 * @return self
 	 */
 	public static function get_instance(): self {
-
-		$class = static::class;
-
-		return self::$instances[ $class ];
+		return self::$instances[ static::class ];
 	}
 }
