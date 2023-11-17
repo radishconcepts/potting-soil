@@ -39,7 +39,7 @@ trait PluginAndThemeBase {
 	 */
 	public static function setup( string $file, ...$args ): void {
 
-		PottingSoil::get_instance();
+		//PottingSoil::get_instance();
 
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
 
