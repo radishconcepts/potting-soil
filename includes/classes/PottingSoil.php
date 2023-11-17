@@ -12,7 +12,7 @@ class PottingSoil {
 	}
 
 	public function setup(): void {
-		load_textdomain( 'potting-soil', self::path() . 'languages/' . get_locale() . '.mo' );
+		load_textdomain( 'potting-soil', __DIR__ . '/../../languages/' . get_locale() . '.mo' );
 	}
 
 	public static function path(): string {
