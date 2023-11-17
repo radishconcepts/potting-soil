@@ -2,9 +2,13 @@
 
 namespace RadishConcepts\PottingSoil;
 
-class Bootstrap {
-	public function __construct() {
-		add_action( 'init', [ $this, 'init' ] );
+use RadishConcepts\PottingSoil\Traits\Singleton;
+
+class PottingSoil {
+	use Singleton;
+
+	public function init(): void {
+		add_action( 'init', [ $this, 'setup' ], 1 );
 	}
 
 	public function setup(): void {

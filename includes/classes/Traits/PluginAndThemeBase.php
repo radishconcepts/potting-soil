@@ -3,6 +3,7 @@
 namespace RadishConcepts\PottingSoil\Traits;
 
 use RadishConcepts\PottingSoil\Plugin;
+use RadishConcepts\PottingSoil\PottingSoil;
 use RadishConcepts\PottingSoil\Theme;
 
 trait PluginAndThemeBase {
@@ -37,6 +38,8 @@ trait PluginAndThemeBase {
 	 * @return void
 	 */
 	public static function setup( string $file, ...$args ): void {
+
+		PottingSoil::get_instance();
 
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
 
