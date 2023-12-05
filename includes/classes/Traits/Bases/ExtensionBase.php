@@ -2,6 +2,7 @@
 
 namespace RadishConcepts\PottingSoil\Traits\Bases;
 
+use RadishConcepts\PottingSoil\Helpers\StringHelpers;
 use RadishConcepts\PottingSoil\Plugin;
 use RadishConcepts\PottingSoil\PottingSoil;
 use RadishConcepts\PottingSoil\Theme;
@@ -42,12 +43,12 @@ trait ExtensionBase {
 
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
 
-			$args[ 'path' ]     = plugin_dir_path( $file );
-			$args[ 'url' ]      = plugin_dir_url( $file );
+			$args[ 'path' ]     = StringHelpers::untrailingslash( plugin_dir_path( $file ) );
+			$args[ 'url' ]      = StringHelpers::untrailingslash( plugin_dir_url( $file ) );
 		} elseif ( str_ends_with( static::class, 'Theme' ) ) {
 
-			$args[ 'path' ]     = get_template_directory();
-			$args[ 'url' ]      = get_template_directory_uri();
+			$args[ 'path' ]     = StringHelpers::untrailingslash( get_template_directory() );
+			$args[ 'url' ]      = StringHelpers::untrailingslash( get_template_directory_uri() );
 		} else {
 
 			wp_die( 'The class name must end with "Plugin" or "Theme".' );
