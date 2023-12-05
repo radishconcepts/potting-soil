@@ -63,9 +63,9 @@ trait ExtensionBase {
 	/**
 	 * Return the instance of the plugin or theme.
 	 *
-	 * @return Plugin|Theme
+	 * @return Plugin|Theme|null
 	 */
-	public static function get_instance(): Plugin|Theme {
+	public static function get_instance(): null|Plugin|Theme {
 		return self::$instance;
 	}
 
