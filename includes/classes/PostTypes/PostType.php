@@ -86,7 +86,7 @@ abstract class PostType implements PostTypeInterface {
 		$this->setup();
 
 		// Parse the arguments with the default arguments.
-		$args = wp_parse_args( $this->args, [
+		$this->args = wp_parse_args( $this->args, [
 			'labels'       => $this->labels(),
 			'public'       => true,
 			'show_in_rest' => true,
@@ -97,7 +97,7 @@ abstract class PostType implements PostTypeInterface {
 		]);
 
 		// Register the post type.
-		register_post_type( $this->post_type, $args );
+		register_post_type( $this->post_type, $this->args );
 	}
 
 	/**

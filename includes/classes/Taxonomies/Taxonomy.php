@@ -88,7 +88,7 @@ abstract class Taxonomy implements TaxonomyInterface {
 		$this->setup();
 
 		// Parse the arguments with the default arguments.
-		$args = wp_parse_args( $this->args, [
+		$this->args = wp_parse_args( $this->args, [
 			'labels'       => $this->labels(),
 			'public'       => true,
 			'show_in_rest' => true,
@@ -102,7 +102,7 @@ abstract class Taxonomy implements TaxonomyInterface {
 		}
 
 		// Register the post type.
-		register_taxonomy( $this->taxonomy, $post_types, $args );
+		register_taxonomy( $this->taxonomy, $post_types, $this->args );
 	}
 
 	/**
