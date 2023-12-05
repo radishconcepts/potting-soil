@@ -40,24 +40,23 @@ trait ExtensionBase {
 	 * @return void
 	 */
 	public static function setup( string $file, ...$args ): void {
-
+		// Set path and URL for the plugin or theme.
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
-
 			$args[ 'path' ]     = StringHelpers::untrailingslash( plugin_dir_path( $file ) );
 			$args[ 'url' ]      = StringHelpers::untrailingslash( plugin_dir_url( $file ) );
 		} elseif ( str_ends_with( static::class, 'Theme' ) ) {
-
 			$args[ 'path' ]     = StringHelpers::untrailingslash( get_template_directory() );
 			$args[ 'url' ]      = StringHelpers::untrailingslash( get_template_directory_uri() );
 		} else {
-
 			wp_die( 'The class name must end with "Plugin" or "Theme".' );
 		}
 
+		// Add the other required arguments.
 		$args[ 'basename' ]     = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'textdomain' ]   = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'name' ]         = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
 
+		// Initiate the class.
 		self::$instance = new self( ...$args );
 	}
 
