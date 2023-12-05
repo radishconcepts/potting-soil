@@ -1,14 +1,14 @@
 <?php
 
-namespace RadishConcepts\PottingSoil\Traits;
+namespace RadishConcepts\PottingSoil\Traits\Bases;
 
 use RadishConcepts\PottingSoil\Plugin;
 use RadishConcepts\PottingSoil\PottingSoil;
 use RadishConcepts\PottingSoil\Theme;
 
-trait PluginAndThemeBase {
-	private static self $instance;
+trait ExtensionBase {
 
+	private static ?self $instance = null;
 
 	private string $path;
 	private string $url;
@@ -16,12 +16,13 @@ trait PluginAndThemeBase {
 	private string $basename;
 	private string $textdomain;
 
-	/**
-	 * Initialize the plugin or theme.
-	 *
-	 * @param ...$args
-	 */
 	private function __construct( ...$args ) {
+		// Check if PottingSoil is bootstrapped.
+		if ( PottingSoil::get_instance() === null ) {
+			wp_die( 'You need to add "PottingSoil::bootstrap()" in the main file of your plugin and/or theme.' );
+		}
+
+		// Set instance properties.
 		$this->path         = $args[ 'path' ];
 		$this->url          = $args[ 'url' ];
 		$this->name         = $args[ 'name' ];
@@ -39,8 +40,6 @@ trait PluginAndThemeBase {
 	 */
 	public static function setup( string $file, ...$args ): void {
 
-		//PottingSoil::get_instance();
-
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
 
 			$args[ 'path' ]     = plugin_dir_path( $file );
@@ -51,7 +50,7 @@ trait PluginAndThemeBase {
 			$args[ 'url' ]      = get_template_directory_uri();
 		} else {
 
-			throw new \RuntimeException( 'The class name must end with "Plugin" or "Theme".' );
+			wp_die( 'The class name must end with "Plugin" or "Theme".' );
 		}
 
 		$args[ 'basename' ]     = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
@@ -82,11 +81,11 @@ trait PluginAndThemeBase {
 	/**
 	 * Return the path of the plugin or theme.
 	 *
-	 * @param string|null $append The string to append to the path.
+	 * @param string $append The string to append to the path.
 	 *
 	 * @return string
 	 */
-	public static function path( string $append = null ): string {
+	public static function path( string $append = '' ): string {
 		return trailingslashit( self::get_instance()->path ) . $append;
 	}
 

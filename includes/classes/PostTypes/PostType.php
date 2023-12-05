@@ -3,7 +3,6 @@
 namespace RadishConcepts\PottingSoil\PostTypes;
 
 use RadishConcepts\PottingSoil\Traits\ArgsProperties;
-use RuntimeException;
 
 /**
  *
@@ -80,7 +79,7 @@ abstract class PostType implements PostTypeInterface {
 	public function init(): void {
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
-			throw new RuntimeException( 'The method "setup" must be implemented.' );
+			wp_die( 'The method "setup" must be implemented.' );
 		}
 
 		// Call the "setup" method.
@@ -88,12 +87,13 @@ abstract class PostType implements PostTypeInterface {
 
 		// Parse the arguments with the default arguments.
 		$args = wp_parse_args( $this->args, [
-			'labels' => $this->labels(),
-			'public' => true,
-			'supports' => [
+			'labels'       => $this->labels(),
+			'public'       => true,
+			'show_in_rest' => true,
+			'supports'     => [
 				'title',
 				'editor',
-			]
+			],
 		]);
 
 		// Register the post type.

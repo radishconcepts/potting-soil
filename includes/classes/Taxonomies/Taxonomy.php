@@ -3,7 +3,6 @@
 namespace RadishConcepts\PottingSoil\Taxonomies;
 
 use RadishConcepts\PottingSoil\Traits\ArgsProperties;
-use RuntimeException;
 
 /**
  *
@@ -82,7 +81,7 @@ abstract class Taxonomy implements TaxonomyInterface {
 	public function init(): void {
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
-			throw new RuntimeException( 'The method "setup" must be implemented.' );
+			wp_die( 'The method "setup" must be implemented.' );
 		}
 
 		// Call the "setup" method.
@@ -90,8 +89,9 @@ abstract class Taxonomy implements TaxonomyInterface {
 
 		// Parse the arguments with the default arguments.
 		$args = wp_parse_args( $this->args, [
-			'labels' => $this->labels(),
-			'public' => true
+			'labels'       => $this->labels(),
+			'public'       => true,
+			'show_in_rest' => true,
 		]);
 
 		// Check if the post types is a string or an array. When it is a string, convert it to an array.

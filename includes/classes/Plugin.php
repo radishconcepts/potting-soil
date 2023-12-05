@@ -2,8 +2,8 @@
 
 namespace RadishConcepts\PottingSoil;
 
-use RadishConcepts\PottingSoil\Traits\PluginAndThemeBase;
+use RadishConcepts\PottingSoil\Traits\Bases\ExtensionBase;
 
 class Plugin {
-	use PluginAndThemeBase;
+	use ExtensionBase;
 }

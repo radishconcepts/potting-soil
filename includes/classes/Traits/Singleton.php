@@ -6,7 +6,7 @@ trait Singleton {
 	protected static self $instance;
 
 	final public static function get_instance(): self {
-		if ( null === static::$instance ) {
+		if ( static::$instance === null ) {
 			static::$instance = new static();
 		}
 
