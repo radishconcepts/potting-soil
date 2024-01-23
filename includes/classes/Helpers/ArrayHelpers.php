@@ -8,13 +8,13 @@ class ArrayHelpers {
 	 *
 	 * @note This helper only works for one dimensional arrays.
 	 *
-	 * @param string|array $needles The needle(s) to search for.
+	 * @param array|string $needles The needle(s) to search for.
 	 * @param array $haystack The array to search in.
 	 * @param bool $strict Whether to use strict comparison.
 	 *
 	 * @return bool
 	 */
-	public static function exists( $needles, array $haystack, bool $strict = false ): bool {
+	public static function exists( array|string $needles, array $haystack, bool $strict = false ): bool {
 		// If the needles are not an array, convert them to an array by splitting on comma.
 		if ( ! is_array( $needles ) ) {
 			$needles = explode( ',', $needles );
