@@ -1,0 +1,239 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2023-11-09 16:12+0100\n"
+"PO-Revision-Date: 2023-11-09 16:16+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+"X-Poedit-Basepath: ../includes\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: classes/PostTypes/PostType.php:130
+msgid "Add new"
+msgstr "Nieuwe toevoegen"
+
+#: classes/PostTypes/PostType.php:131 classes/Taxonomies/Taxonomy.php:147
+#, php-format
+msgid "Add new %s"
+msgstr "Voeg nieuwe %s toe"
+
+#: classes/PostTypes/PostType.php:132 classes/Taxonomies/Taxonomy.php:144
+#, php-format
+msgid "Edit %s"
+msgstr "Bewerk %s"
+
+#: classes/PostTypes/PostType.php:133
+#, php-format
+msgid "New %s"
+msgstr "Nieuwe %s"
+
+#: classes/PostTypes/PostType.php:134 classes/PostTypes/PostType.php:135
+#: classes/Taxonomies/Taxonomy.php:145
+#, php-format
+msgid "View %s"
+msgstr "Toon %s"
+
+#: classes/PostTypes/PostType.php:136 classes/Taxonomies/Taxonomy.php:135
+#, php-format
+msgid "Search %s"
+msgstr "Zoek %s"
+
+#: classes/PostTypes/PostType.php:137 classes/Taxonomies/Taxonomy.php:152
+#, php-format
+msgid "No %s found"
+msgstr "Geen %s gevonden"
+
+#: classes/PostTypes/PostType.php:138
+#, php-format
+msgid "No %s found in trash"
+msgstr "Geen %s gevonden in de prullenbak"
+
+#: classes/PostTypes/PostType.php:139 classes/Taxonomies/Taxonomy.php:139
+#, php-format
+msgid "Parent %s:"
+msgstr "Bovenliggende %s:"
+
+#: classes/PostTypes/PostType.php:140 classes/Taxonomies/Taxonomy.php:137
+#, php-format
+msgid "All %s"
+msgstr "Alle %s"
+
+#: classes/PostTypes/PostType.php:141
+#, php-format
+msgid "%s archives"
+msgstr "%s archieven"
+
+#: classes/PostTypes/PostType.php:142
+#, php-format
+msgid "%s attributes"
+msgstr "%s attributen"
+
+#: classes/PostTypes/PostType.php:143
+#, php-format
+msgid "Insert into %s"
+msgstr "Voeg aan %s toe"
+
+#: classes/PostTypes/PostType.php:144
+#, php-format
+msgid "Uploaded to this %s"
+msgstr "Geupload naar deze %s"
+
+#: classes/PostTypes/PostType.php:145
+#, php-format
+msgid "%s image"
+msgstr "%s afbeelding"
+
+#: classes/PostTypes/PostType.php:146
+#, php-format
+msgid "Set %s image"
+msgstr "Stel %s afbeelding in"
+
+#: classes/PostTypes/PostType.php:147
+#, php-format
+msgid "Remove %s image"
+msgstr "Verwijder %s afbeelding"
+
+#: classes/PostTypes/PostType.php:148
+#, php-format
+msgid "Use as %s image"
+msgstr "Gebruik als %s afbeelding"
+
+#: classes/PostTypes/PostType.php:150
+#, php-format
+msgid "Filter %s list"
+msgstr "Filter %s lijst"
+
+#: classes/PostTypes/PostType.php:151
+#, php-format
+msgid "Filter by %s date"
+msgstr "Filter op %s datum"
+
+#: classes/PostTypes/PostType.php:152 classes/Taxonomies/Taxonomy.php:155
+#, php-format
+msgid "%s list navigation"
+msgstr "%s lijstnavigatie"
+
+#: classes/PostTypes/PostType.php:153 classes/Taxonomies/Taxonomy.php:156
+#, php-format
+msgid "%s list"
+msgstr "%s lijst"
+
+#: classes/PostTypes/PostType.php:154
+#, php-format
+msgid "%s published"
+msgstr "%s gepubliceerd"
+
+#: classes/PostTypes/PostType.php:155
+#, php-format
+msgid "%s published privately"
+msgstr "%s privé gepubliceerd"
+
+#: classes/PostTypes/PostType.php:156
+#, php-format
+msgid "%s reverted to draft"
+msgstr "%s teruggezet naar concept"
+
+#: classes/PostTypes/PostType.php:157
+#, php-format
+msgid "%s scheduled"
+msgstr "%s ingeroosterd"
+
+#: classes/PostTypes/PostType.php:158
+#, php-format
+msgid "%s updated"
+msgstr "%s bewerkt"
+
+#: classes/PostTypes/PostType.php:159 classes/Taxonomies/Taxonomy.php:159
+#, php-format
+msgid "%s link"
+msgstr "%s link"
+
+#: classes/PostTypes/PostType.php:160
+#, php-format
+msgid "%s link description"
+msgstr "%s link omschrijving"
+
+#: classes/Taxonomies/Taxonomy.php:136
+#, php-format
+msgid "Popular %s"
+msgstr "Populaire %s"
+
+#: classes/Taxonomies/Taxonomy.php:138
+#, php-format
+msgid "Parent %s"
+msgstr "Bovenliggende %s"
+
+#: classes/Taxonomies/Taxonomy.php:140
+#, php-format
+msgid "The name of the %s."
+msgstr "De naam van de %s."
+
+#: classes/Taxonomies/Taxonomy.php:141
+#, php-format
+msgid "The slug of the %s."
+msgstr "De slug van de %s."
+
+#: classes/Taxonomies/Taxonomy.php:142
+#, php-format
+msgid "The parent of the %s."
+msgstr "Bovenliggend item van %s."
+
+#: classes/Taxonomies/Taxonomy.php:143
+#, php-format
+msgid "The description of the %s."
+msgstr "Omschrijving van de %s."
+
+#: classes/Taxonomies/Taxonomy.php:146
+#, php-format
+msgid "Update %s"
+msgstr "Bewerk %s"
+
+#: classes/Taxonomies/Taxonomy.php:148
+#, php-format
+msgid "New %s name"
+msgstr "Nieuwe %s naam"
+
+#: classes/Taxonomies/Taxonomy.php:149
+#, php-format
+msgid "Separate %s with commas"
+msgstr "Scheid %s door comma's"
+
+#: classes/Taxonomies/Taxonomy.php:150
+#, php-format
+msgid "Add or remove %s"
+msgstr "Verwijder of voeg nieuwe %s toe"
+
+#: classes/Taxonomies/Taxonomy.php:151
+#, php-format
+msgid "Choose from most used %s"
+msgstr "Kies uit de meest gekozen %s"
+
+#: classes/Taxonomies/Taxonomy.php:153
+#, php-format
+msgid "No %s"
+msgstr "Geen %s"
+
+#: classes/Taxonomies/Taxonomy.php:154
+#, php-format
+msgid "Filter by %s"
+msgstr "Filer op %s"
+
+#: classes/Taxonomies/Taxonomy.php:157
+msgid "Most used"
+msgstr "Meest gebruikt"
+
+#: classes/Taxonomies/Taxonomy.php:158
+#, php-format
+msgid "← Back to %s"
+msgstr "← Terug naar %s"
+
+#: classes/Taxonomies/Taxonomy.php:160
+#, php-format
+msgid "A link to a %s."
+msgstr "Een link naar een %s."

@@ -1,13 +1,15 @@
 <?php
 
-namespace RadishConcepts\PottingSoil\Traits;
+namespace RadishConcepts\PottingSoil\Traits\Bases;
 
+use RadishConcepts\PottingSoil\Helpers\StringHelpers;
 use RadishConcepts\PottingSoil\Plugin;
+use RadishConcepts\PottingSoil\PottingSoil;
 use RadishConcepts\PottingSoil\Theme;
 
-trait PluginAndThemeBase {
-	private static self $instance;
+trait ExtensionBase {
 
+	private static ?self $instance = null;
 
 	private string $path;
 	private string $url;
@@ -15,12 +17,13 @@ trait PluginAndThemeBase {
 	private string $basename;
 	private string $textdomain;
 
-	/**
-	 * Initialize the plugin or theme.
-	 *
-	 * @param ...$args
-	 */
 	private function __construct( ...$args ) {
+		// Check if PottingSoil is bootstrapped.
+		if ( PottingSoil::get_instance() === null ) {
+			wp_die( 'You need to add "PottingSoil::bootstrap()" in the main file of your plugin and/or theme.' );
+		}
+
+		// Set instance properties.
 		$this->path         = $args[ 'path' ];
 		$this->url          = $args[ 'url' ];
 		$this->name         = $args[ 'name' ];
@@ -37,34 +40,42 @@ trait PluginAndThemeBase {
 	 * @return void
 	 */
 	public static function setup( string $file, ...$args ): void {
-
+		// Set path and URL for the plugin or theme.
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
-
-			$args[ 'path' ]     = plugin_dir_path( $file );
-			$args[ 'url' ]      = plugin_dir_url( $file );
+			$args[ 'path' ]     = StringHelpers::untrailingslash( plugin_dir_path( $file ) );
+			$args[ 'url' ]      = StringHelpers::untrailingslash( plugin_dir_url( $file ) );
 		} elseif ( str_ends_with( static::class, 'Theme' ) ) {
-
-			$args[ 'path' ]     = get_template_directory();
-			$args[ 'url' ]      = get_template_directory_uri();
+			$args[ 'path' ]     = StringHelpers::untrailingslash( get_template_directory() );
+			$args[ 'url' ]      = StringHelpers::untrailingslash( get_template_directory_uri() );
 		} else {
-
-			throw new \RuntimeException( 'The class name must end with "Plugin" or "Theme".' );
+			wp_die( 'The class name must end with "Plugin" or "Theme".' );
 		}
 
+		// Add the other required arguments.
 		$args[ 'basename' ]     = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'textdomain' ]   = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'name' ]         = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
 
+		// Initiate the class.
 		self::$instance = new self( ...$args );
 	}
 
 	/**
 	 * Return the instance of the plugin or theme.
 	 *
-	 * @return Plugin|Theme
+	 * @return Plugin|Theme|null
 	 */
-	public static function get_instance(): Plugin|Theme {
+	public static function get_instance(): null|Plugin|Theme {
 		return self::$instance;
+	}
+
+	/**
+	 * Return the basename of the plugin or theme.
+	 *
+	 * @return string
+	 */
+	public static function basename(): string {
+		return self::get_instance()->basename;
 	}
 
 	/**
@@ -79,11 +90,11 @@ trait PluginAndThemeBase {
 	/**
 	 * Return the path of the plugin or theme.
 	 *
-	 * @param string|null $append The string to append to the path.
+	 * @param string $append The string to append to the path.
 	 *
 	 * @return string
 	 */
-	public static function path( string $append = null ): string {
+	public static function path( string $append = '' ): string {
 		return trailingslashit( self::get_instance()->path ) . $append;
 	}
 
