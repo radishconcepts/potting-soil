@@ -70,6 +70,15 @@ trait ExtensionBase {
 	}
 
 	/**
+	 * Return the basename of the plugin or theme.
+	 *
+	 * @return string
+	 */
+	public static function basename(): string {
+		return self::get_instance()->basename;
+	}
+
+	/**
 	 * Return the textdomain of the plugin or theme.
 	 *
 	 * @return string
