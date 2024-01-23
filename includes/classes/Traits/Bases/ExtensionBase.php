@@ -58,6 +58,9 @@ trait ExtensionBase {
 
 		// Initiate the class.
 		self::$instance = new self( ...$args );
+
+		// Bootstrap PottingSoil, so the WordPress functionality is also available in the package.
+		PottingSoil::bootstrap();
 	}
 
 	/**
