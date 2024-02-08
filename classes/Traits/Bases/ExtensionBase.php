@@ -18,10 +18,8 @@ trait ExtensionBase {
 	private string $textdomain;
 
 	private function __construct( ...$args ) {
-		// Check if PottingSoil is bootstrapped.
-		if ( PottingSoil::get_instance() === null ) {
-			wp_die( 'You need to add "PottingSoil::bootstrap()" in the main file of your plugin and/or theme.' );
-		}
+		// Bootstrap PottingSoil, so the WordPress functionality is also available in the package.
+		PottingSoil::bootstrap();
 
 		// Set instance properties.
 		$this->path         = $args[ 'path' ];
