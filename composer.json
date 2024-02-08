@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "RadishConcepts\\PottingSoil\\": "includes/classes/"
+            "RadishConcepts\\PottingSoil\\": "classes/"
         }
     }
 }
