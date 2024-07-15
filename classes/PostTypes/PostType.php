@@ -114,7 +114,7 @@ abstract class PostType implements PostTypeInterface {
 			'edit_item'                 => sprintf( __( 'Edit %s', 'potting-soil' ), $this->singular_name ),
 			'new_item'                  => sprintf( __( 'New %s', 'potting-soil' ), $this->singular_name ),
 			'view_item'                 => sprintf( __( 'View %s', 'potting-soil' ), $this->singular_name ),
-			'view_items'                => sprintf( __( 'View %s',  ), 'potting-soil' ),
+			'view_items'                => sprintf( __( 'View %s', 'potting-soil' ), $this->name ),
 			'search_items'              => sprintf( __( 'Search %s', 'potting-soil' ), $this->name ),
 			'not_found'                 => sprintf( __( 'No %s found', 'potting-soil' ), $this->name ),
 			'not_found_in_trash'        => sprintf( __( 'No %s found in trash', 'potting-soil' ), $this->name ),

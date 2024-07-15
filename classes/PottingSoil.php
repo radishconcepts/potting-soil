@@ -12,7 +12,7 @@ class PottingSoil {
 
 	private function __construct() {
 		// Set the path to the root of PottingSoil.
-		$this->path = StringHelpers::untrailingslash( dirname( __DIR__, 2 ) );
+		$this->path = StringHelpers::untrailingslash( dirname( __DIR__, 1 ) );
 
 		// Load the textdomain.
 		add_action( 'init', [ $this, 'load_textdomain' ], 1 );
