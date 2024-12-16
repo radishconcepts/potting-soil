@@ -2,6 +2,8 @@
 
 namespace RadishConcepts\PottingSoil\Helpers;
 
+use Exception;
+
 /**
  * Sanitizers classes. The most of the helpers are based on the Laravel Framework versions.
  *
@@ -9,7 +11,8 @@ namespace RadishConcepts\PottingSoil\Helpers;
  *
  * @package RadishCli\Helpers
  */
-class StringHelpers {
+class StringHelpers
+{
 	/**
 	 * The cache of camel-cased words.
 	 *
@@ -45,7 +48,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function trailingslash( string $string ): string {
+	public static function trailingslash( string $string ): string
+	{
 		return self::untrailingslash( $string ) . '/';
 	}
 
@@ -56,7 +60,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function untrailingslash( string $string ): string {
+	public static function untrailingslash( string $string ): string
+	{
 		return rtrim( $string, '/' );
 	}
 
@@ -67,7 +72,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function lower( string $value ): string {
+	public static function lower( string $value ): string
+	{
 		return mb_strtolower( $value, 'UTF-8' );
 	}
 
@@ -78,7 +84,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function upper( string $value ): string {
+	public static function upper( string $value ): string
+	{
 		return mb_strtoupper( $value, 'UTF-8' );
 	}
 
@@ -90,8 +97,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function camel( string $value ): string {
-
+	public static function camel( string $value ): string
+	{
 		$cacheKey = $value;
 
 		if (isset( static::$camelCache[ $cacheKey ] ) ) {
@@ -111,8 +118,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function pascal( string $value ): string {
-
+	public static function pascal( string $value ): string
+	{
 		$cacheKey = $value;
 
 		if ( isset( static::$pascalCache[ $cacheKey ] ) ) {
@@ -132,8 +139,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function kebab( string $value ): string {
-
+	public static function kebab( string $value ): string
+	{
 		$cacheKey = $value;
 
 		if ( isset( static::$kebabCache[ $cacheKey ] ) ) {
@@ -151,8 +158,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function snake( string $value ): string {
-
+	public static function snake( string $value ): string
+	{
 		$cachedKey = $value;
 
 		if ( isset( static::$snakeCache[ $cachedKey ] ) ) {
@@ -177,7 +184,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function trailingslashit( $value ) {
+	public static function trailingslashit( $value )
+	{
 		return self::untrailingslashit( $value ) . '/';
 	}
 
@@ -190,7 +198,8 @@ class StringHelpers {
 	 *
 	 * @return string
 	 */
-	public static function untrailingslashit( $value ) {
+	public static function untrailingslashit( $value )
+	{
 		return rtrim( $value, '/\\' );
 	}
 
@@ -202,7 +211,8 @@ class StringHelpers {
 	 * @return string
 	 * @throws Exception
 	 */
-	public static function random( int $length = 16 ): string {
+	public static function random( int $length = 16 ): string
+	{
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$characters_length = strlen( $characters );
 		$random_string = '';

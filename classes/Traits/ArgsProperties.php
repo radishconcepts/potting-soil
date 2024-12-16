@@ -2,7 +2,8 @@
 
 namespace RadishConcepts\PottingSoil\Traits;
 
-trait ArgsProperties {
+trait ArgsProperties
+{
 	/**
 	 * List of arguments for the post type.
 	 *
@@ -18,7 +19,8 @@ trait ArgsProperties {
 	 *
 	 * @return void
 	 */
-	public function __set( string $argument, $value ): void {
+	public function __set( string $argument, $value ): void
+	{
 		$this->args[ $argument ] = $value;
 	}
 
@@ -29,7 +31,8 @@ trait ArgsProperties {
 	 *
 	 * @return mixed|null
 	 */
-	public function __get( string $argument ) {
+	public function __get( string $argument )
+	{
 		return $this->args[ $argument ] ?? null;
 	}
 
@@ -40,7 +43,8 @@ trait ArgsProperties {
 	 *
 	 * @return bool
 	 */
-	public function __isset( string $argument ): bool {
+	public function __isset( string $argument ): bool
+	{
 		return isset( $this->args[ $argument ] );
 	}
 }

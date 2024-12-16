@@ -2,7 +2,7 @@
 
 namespace RadishConcepts\PottingSoil\Taxonomies;
 
-interface TaxonomyInterface {
-
+interface TaxonomyInterface
+{
 	public function setup(): void;
 }

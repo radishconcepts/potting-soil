@@ -2,17 +2,43 @@
 
 namespace RadishConcepts\PottingSoil\Helpers;
 
-class NumberHelpers {
-
-	public static function valutify( $input ): string {
+class NumberHelpers
+{
+	/**
+	 * Convert a number to a currency value.
+	 *
+	 * @param $input
+	 *
+	 * @return string
+	 */
+	public static function valutify( $input ): string
+	{
 		return '€ ' . str_replace( ',00', ',-', number_format( $input, 2, ',', '' ) );
 	}
 
-	public static function floatify( $input ): string {
+	/**
+	 * Convert a number to a float.
+	 *
+	 * @param $input
+	 *
+	 * @return string
+	 */
+	public static function floatify( $input ): string
+	{
 		return (float) str_replace( ',', '.', $input );
 	}
 
-	public static function commafy( $input ): string {
+	/**
+	 * Convert a number to a string.
+	 *
+	 * @param $input
+	 *
+	 * @return string
+	 */
+	public static function commafy( $input ): string
+	{
 		return str_replace( '.', ',', (float) $input );
 	}
 }
+
+

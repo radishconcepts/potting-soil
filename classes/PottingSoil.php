@@ -4,13 +4,14 @@ namespace RadishConcepts\PottingSoil;
 
 use RadishConcepts\PottingSoil\Helpers\StringHelpers;
 
-class PottingSoil {
-
+class PottingSoil
+{
 	private static ?self $instance = null;
 
 	private string $path;
 
-	private function __construct() {
+	private function __construct()
+	{
 		// Set the path to the root of PottingSoil.
 		$this->path = StringHelpers::untrailingslash( dirname( __DIR__, 1 ) );
 
@@ -18,7 +19,8 @@ class PottingSoil {
 		add_action( 'init', [ $this, 'load_textdomain' ], 1 );
 	}
 
-	public function load_textdomain(): void {
+	public function load_textdomain(): void
+	{
 		load_textdomain( 'potting-soil', self::path( 'languages' ) . '/' . get_locale() . '.mo' );
 	}
 
@@ -27,7 +29,8 @@ class PottingSoil {
 	 *
 	 * @return void
 	 */
-	public static function bootstrap(): void {
+	public static function bootstrap(): void
+	{
 		if ( static::$instance === null ) {
 			static::$instance = new self();
 		}
@@ -38,7 +41,8 @@ class PottingSoil {
 	 *
 	 * @return PottingSoil|null
 	 */
-	public static function get_instance(): ?self {
+	public static function get_instance(): ?self
+	{
 		return self::$instance;
 	}
 
@@ -49,7 +53,8 @@ class PottingSoil {
 	 *
 	 * @return string
 	 */
-	public static function path( string $append = '' ): string {
+	public static function path( string $append = '' ): string
+	{
 		return StringHelpers::trailingslash( self::get_instance()->path ) . $append;
 	}
 }
