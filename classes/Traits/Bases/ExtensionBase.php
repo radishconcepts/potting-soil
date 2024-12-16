@@ -11,6 +11,7 @@ trait ExtensionBase
 {
 	private static ?self $instance = null;
 
+	private string $main_file;
 	private string $path;
 	private string $url;
 	private string $name;
@@ -88,6 +89,16 @@ trait ExtensionBase
 	public static function textdomain(): string
 	{
 		return self::get_instance()->textdomain;
+	}
+
+	/**
+	 * Return the main file of the plugin or theme. Normally, you'll pass __FILE__ in the main plugin file.
+	 *
+	 * @return string
+	 */
+	public static function main_file(): string
+	{
+		return self::get_instance()->main_file;
 	}
 
 	/**
