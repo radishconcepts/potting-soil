@@ -24,6 +24,7 @@ trait ExtensionBase
 		PottingSoil::bootstrap();
 
 		// Set instance properties.
+		$this->main_file  = $args[ 'main_file' ];
 		$this->path       = $args[ 'path' ];
 		$this->url        = $args[ 'url' ];
 		$this->name       = $args[ 'name' ];
@@ -53,6 +54,7 @@ trait ExtensionBase
 		}
 
 		// Add the other required arguments.
+		$args[ 'main_file' ]  = $file;
 		$args[ 'basename' ]   = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'textdomain' ] = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'name' ]       = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
