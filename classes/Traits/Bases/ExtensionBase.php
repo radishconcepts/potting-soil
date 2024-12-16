@@ -54,7 +54,7 @@ trait ExtensionBase
 		}
 
 		// Add the other required arguments.
-		$args[ 'main_file' ]  = $file;
+		$args[ 'main_file' ]  = basename( $args[ 'path' ] ) . '/' . basename( $file );
 		$args[ 'basename' ]   = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'textdomain' ] = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'name' ]       = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
