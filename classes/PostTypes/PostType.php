@@ -38,7 +38,8 @@ use RadishConcepts\PottingSoil\Traits\ArgsProperties;
  * @property-write array $template
  * @property-write false|string $template_lock
  */
-abstract class PostType implements PostTypeInterface {
+abstract class PostType implements PostTypeInterface
+{
 	use ArgsProperties;
 
 	private static array $instances = [];
@@ -67,7 +68,8 @@ abstract class PostType implements PostTypeInterface {
 	/**
 	 * PostType constructor.
 	 */
-	private function __construct() {
+	private function __construct()
+	{
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
@@ -76,7 +78,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return void
 	 */
-	public function init(): void {
+	public function init(): void
+	{
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
 			wp_die( 'The method "setup" must be implemented.' );
@@ -105,7 +108,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return array
 	 */
-	private function labels(): array {
+	private function labels(): array
+	{
 		return [
 			'name'                      => $this->name,
 			'singular_name'             => $this->singular_name,
@@ -124,10 +128,10 @@ abstract class PostType implements PostTypeInterface {
 			'attributes'                => sprintf( __( '%s attributes', 'potting-soil' ), $this->singular_name ),
 			'insert_into_item'          => sprintf( __( 'Insert into %s', 'potting-soil' ), $this->singular_name ),
 			'uploaded_to_this_item'     => sprintf( __( 'Uploaded to this %s', 'potting-soil' ), $this->singular_name ),
-			'featured_image'            => sprintf( __( '%s image', 'potting-soil' ), $this->singular_name ),
-			'set_featured_image'        => sprintf( __( 'Set %s image', 'potting-soil' ), $this->singular_name ),
-			'remove_featured_image'     => sprintf( __( 'Remove %s image', 'potting-soil' ), $this->singular_name ),
-			'use_featured_image'        => sprintf( __( 'Use as %s image', 'potting-soil' ), $this->singular_name ),
+			'featured_image'            => sprintf( __( '%s featured image', 'potting-soil' ), $this->singular_name ),
+			'set_featured_image'        => sprintf( __( 'Set %s featured image', 'potting-soil' ), $this->singular_name ),
+			'remove_featured_image'     => sprintf( __( 'Remove %s featured image', 'potting-soil' ), $this->singular_name ),
+			'use_featured_image'        => sprintf( __( 'Use as %s featured image', 'potting-soil' ), $this->singular_name ),
 			'menu_name'                 => $this->name,
 			'filter_items_list'         => sprintf( __( 'Filter %s list', 'potting-soil' ), $this->name ),
 			'filter_ny_date'            => sprintf( __( 'Filter by %s date', 'potting-soil' ), $this->singular_name ),
@@ -136,7 +140,7 @@ abstract class PostType implements PostTypeInterface {
 			'item_published'            => sprintf( __( '%s published', 'potting-soil' ), $this->singular_name ),
 			'item_published_privately'  => sprintf( __( '%s published privately', 'potting-soil' ), $this->singular_name ),
 			'item_reverted_to_draft'    => sprintf( __( '%s reverted to draft', 'potting-soil' ), $this->singular_name ),
-			'item_scheduled'            => sprintf( __( '%s scheduled', $this->singular_name ), $this->singular_name ),
+			'item_scheduled'            => sprintf( __( '%s scheduled', 'potting-soil' ), $this->singular_name ),
 			'item_updated'              => sprintf( __( '%s updated', 'potting-soil' ), $this->singular_name ),
 			'item_link' 		        => sprintf( __( '%s link', 'potting-soil' ), $this->singular_name ),
 			'item_link_description'     => sprintf( __( '%s link description', 'potting-soil' ), $this->singular_name ),
@@ -148,7 +152,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return string
 	 */
-	public static function get_post_type(): string {
+	public static function get_post_type(): string
+	{
 		return self::$instances[ static::class ]->post_type;
 	}
 
@@ -159,7 +164,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return string
 	 */
-	public static function get_label( $key ): string {
+	public static function get_label( $key ): string
+	{
 		return self::$instances[ static::class ]->labels()[ $key ] ?? '';
 	}
 
@@ -168,7 +174,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return void
 	 */
-	public static function register(): void {
+	public static function register(): void
+	{
 		self::$instances[ static::class ] = new static();
 	}
 
@@ -177,7 +184,8 @@ abstract class PostType implements PostTypeInterface {
 	 *
 	 * @return self
 	 */
-	public static function get_instance(): self {
+	public static function get_instance(): self
+	{
 		return self::$instances[ static::class ];
 	}
 }

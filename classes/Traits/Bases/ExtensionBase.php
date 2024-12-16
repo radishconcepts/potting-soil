@@ -7,8 +7,8 @@ use RadishConcepts\PottingSoil\Plugin;
 use RadishConcepts\PottingSoil\PottingSoil;
 use RadishConcepts\PottingSoil\Theme;
 
-trait ExtensionBase {
-
+trait ExtensionBase
+{
 	private static ?self $instance = null;
 
 	private string $path;
@@ -17,16 +17,17 @@ trait ExtensionBase {
 	private string $basename;
 	private string $textdomain;
 
-	private function __construct( ...$args ) {
+	private function __construct( ...$args )
+	{
 		// Bootstrap PottingSoil, so the WordPress functionality is also available in the package.
 		PottingSoil::bootstrap();
 
 		// Set instance properties.
-		$this->path         = $args[ 'path' ];
-		$this->url          = $args[ 'url' ];
-		$this->name         = $args[ 'name' ];
-		$this->basename     = $args[ 'basename' ];
-		$this->textdomain   = $args[ 'textdomain' ];
+		$this->path       = $args[ 'path' ];
+		$this->url        = $args[ 'url' ];
+		$this->name       = $args[ 'name' ];
+		$this->basename   = $args[ 'basename' ];
+		$this->textdomain = $args[ 'textdomain' ];
 	}
 
 	/**
@@ -37,22 +38,23 @@ trait ExtensionBase {
 	 *
 	 * @return void
 	 */
-	public static function setup( string $file, ...$args ): void {
+	public static function setup( string $file, ...$args ): void
+	{
 		// Set path and URL for the plugin or theme.
 		if ( str_ends_with( static::class, 'Plugin' ) ) {
-			$args[ 'path' ]     = StringHelpers::untrailingslash( plugin_dir_path( $file ) );
-			$args[ 'url' ]      = StringHelpers::untrailingslash( plugin_dir_url( $file ) );
+			$args[ 'path' ] = StringHelpers::untrailingslash( plugin_dir_path( $file ) );
+			$args[ 'url' ]  = StringHelpers::untrailingslash( plugin_dir_url( $file ) );
 		} elseif ( str_ends_with( static::class, 'Theme' ) ) {
-			$args[ 'path' ]     = StringHelpers::untrailingslash( get_template_directory() );
-			$args[ 'url' ]      = StringHelpers::untrailingslash( get_template_directory_uri() );
+			$args[ 'path' ] = StringHelpers::untrailingslash( get_template_directory() );
+			$args[ 'url' ]  = StringHelpers::untrailingslash( get_template_directory_uri() );
 		} else {
 			wp_die( 'The class name must end with "Plugin" or "Theme".' );
 		}
 
 		// Add the other required arguments.
-		$args[ 'basename' ]     = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
-		$args[ 'textdomain' ]   = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
-		$args[ 'name' ]         = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
+		$args[ 'basename' ]   = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
+		$args[ 'textdomain' ] = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
+		$args[ 'name' ]       = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
 
 		// Initiate the class.
 		self::$instance = new self( ...$args );
@@ -63,7 +65,8 @@ trait ExtensionBase {
 	 *
 	 * @return Plugin|Theme|null
 	 */
-	public static function get_instance(): null|Plugin|Theme {
+	public static function get_instance(): null|Plugin|Theme
+	{
 		return self::$instance;
 	}
 
@@ -72,7 +75,8 @@ trait ExtensionBase {
 	 *
 	 * @return string
 	 */
-	public static function basename(): string {
+	public static function basename(): string
+	{
 		return self::get_instance()->basename;
 	}
 
@@ -81,7 +85,8 @@ trait ExtensionBase {
 	 *
 	 * @return string
 	 */
-	public static function textdomain(): string {
+	public static function textdomain(): string
+	{
 		return self::get_instance()->textdomain;
 	}
 
@@ -92,7 +97,8 @@ trait ExtensionBase {
 	 *
 	 * @return string
 	 */
-	public static function path( string $append = '' ): string {
+	public static function path( string $append = '' ): string
+	{
 		return trailingslashit( self::get_instance()->path ) . $append;
 	}
 
@@ -103,7 +109,8 @@ trait ExtensionBase {
 	 *
 	 * @return string
 	 */
-	public static function url( string $append = null ): string {
+	public static function url( string $append = null ): string
+	{
 		return trailingslashit( self::get_instance()->url ) . $append;
 	}
 }

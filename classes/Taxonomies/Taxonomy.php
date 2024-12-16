@@ -33,7 +33,8 @@ use RadishConcepts\PottingSoil\Traits\ArgsProperties;
  * @property-write boolean $sort
  * @property-write array $args
  */
-abstract class Taxonomy implements TaxonomyInterface {
+abstract class Taxonomy implements TaxonomyInterface
+{
 	use ArgsProperties;
 
 	private static array $instances = [];
@@ -69,7 +70,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	/**
 	 * Taxonomy constructor.
 	 */
-	private function __construct() {
+	private function __construct()
+	{
 		add_action( 'init', [ $this, 'init' ] );
 	}
 
@@ -78,7 +80,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return void
 	 */
-	public function init(): void {
+	public function init(): void
+	{
 		// Check if the method "setup" is implemented.
 		if ( !method_exists( $this, 'setup' ) ) {
 			wp_die( 'The method "setup" must be implemented.' );
@@ -110,7 +113,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return string[]
 	 */
-	private function labels(): array {
+	private function labels(): array
+	{
 		return [
 			'name'                       => $this->name,
 			'singular_name'              => $this->singular_name,
@@ -148,7 +152,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return string
 	 */
-	public static function get_taxonomy(): string {
+	public static function get_taxonomy(): string
+	{
 		return self::$instances[ static::class ]->taxonomy;
 	}
 
@@ -159,7 +164,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return string
 	 */
-	public static function get_label( $key ): string {
+	public static function get_label( $key ): string
+	{
 		return self::$instances[ static::class ]->labels()[ $key ] ?? '';
 	}
 
@@ -168,7 +174,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return void
 	 */
-	public static function register(): void {
+	public static function register(): void
+	{
 		self::$instances[ static::class ] = new static();
 	}
 
@@ -177,7 +184,8 @@ abstract class Taxonomy implements TaxonomyInterface {
 	 *
 	 * @return self
 	 */
-	public static function get_instance(): self {
+	public static function get_instance(): self
+	{
 		return self::$instances[ static::class ];
 	}
 }

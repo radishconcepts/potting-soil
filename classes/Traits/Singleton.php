@@ -2,11 +2,12 @@
 
 namespace RadishConcepts\PottingSoil\Traits;
 
-trait Singleton {
-
+trait Singleton
+{
 	private static array $instances = [];
 
-	final public static function get_instance(): self {
+	final public static function get_instance(): self
+	{
 		if ( !isset( static::$instances[ static::class ] ) ) {
 			static::$instances[ static::class ] = new static();
 		}
@@ -14,7 +15,8 @@ trait Singleton {
 		return self::$instances[ static::class ];
 	}
 
-	final public function __construct() {
+	final public function __construct()
+	{
 		$this->init();
 	}
 

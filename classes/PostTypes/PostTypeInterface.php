@@ -2,7 +2,7 @@
 
 namespace RadishConcepts\PottingSoil\PostTypes;
 
-interface PostTypeInterface {
-
+interface PostTypeInterface
+{
 	public function setup(): void;
 }

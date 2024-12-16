@@ -2,7 +2,8 @@
 
 namespace RadishConcepts\PottingSoil\Helpers;
 
-class ArrayHelpers {
+class ArrayHelpers
+{
 	/**
 	 * Check if needle(s) exists in haystack.
 	 *
@@ -14,7 +15,8 @@ class ArrayHelpers {
 	 *
 	 * @return bool
 	 */
-	public static function exists( array|string $needles, array $haystack, bool $strict = false ): bool {
+	public static function exists( array|string $needles, array $haystack, bool $strict = false ): bool
+	{
 		// If the needles are not an array, convert them to an array by splitting on comma.
 		if ( ! is_array( $needles ) ) {
 			$needles = explode( ',', $needles );
@@ -48,7 +50,8 @@ class ArrayHelpers {
 	 *
 	 * @return array
 	 */
-	public static function toValueKeyPairs( array $array, bool $sort = true ): array {
+	public static function toValueKeyPairs( array $array, bool $sort = true ): array
+	{
 		// When the array is multidimensional, return the array as is.
 		if ( self::isMultiDimensional( $array ) ) {
 			return $array;
@@ -84,7 +87,8 @@ class ArrayHelpers {
 	 *
 	 * @return bool
 	 */
-	public static function isMultiDimensional( array $array ): bool {
+	public static function isMultiDimensional( array $array ): bool
+	{
 		return count( $array ) !== count( $array, COUNT_RECURSIVE );
 	}
 
@@ -96,8 +100,8 @@ class ArrayHelpers {
 	 *
 	 * @return array
 	 */
-	public static function fillKeys( array $array, array $keys ): array {
-
+	public static function fillKeys( array $array, array $keys ): array
+	{
 		return array_map( static function ( $row ) use ( $keys ) {
 
 			$columns = [];
