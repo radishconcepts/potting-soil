@@ -54,7 +54,7 @@ trait ExtensionBase
 		}
 
 		// Add the other required arguments.
-		$args[ 'main_file' ]  = basename( $args[ 'path' ] ) . '/' . basename( $file );
+		$args[ 'main_file' ]  = $file;
 		$args[ 'basename' ]   = $args[ 'basename' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'textdomain' ] = $args[ 'textdomain' ] ?? wp_basename( $args[ 'path' ] );
 		$args[ 'name' ]       = ucfirst( $args[ 'name' ] ?? $args[ 'basename' ] );
@@ -66,9 +66,9 @@ trait ExtensionBase
 	/**
 	 * Return the instance of the plugin or theme.
 	 *
-	 * @return Plugin|Theme|null
+	 * @return
 	 */
-	public static function get_instance(): null|Plugin|Theme
+	public static function get_instance()
 	{
 		return self::$instance;
 	}
