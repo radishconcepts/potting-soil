@@ -221,4 +221,29 @@ class StringHelpers
 		}
 		return $random_string;
 	}
+
+	/**
+	 * Return the read time of the given content.
+	 *
+	 * @param string $content
+	 *
+	 * @return string
+	 */
+	public static function readTime( string $content ): string
+	{
+		$word_count = str_word_count( strip_tags( $content ) );
+		$minutes = floor( $word_count / 200 );
+		$seconds = floor( $word_count % 200 / ( 200 / 60 ) );
+		$read_time = '';
+
+		if ( $minutes > 0 ) {
+			$read_time .= $minutes . ' min';
+		}
+
+		if ( $seconds > 0 ) {
+			$read_time .= ' ' . $seconds . ' sec';
+		}
+
+		return $read_time;
+	}
 }
