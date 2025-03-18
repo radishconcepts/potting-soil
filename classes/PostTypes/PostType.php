@@ -9,6 +9,7 @@ use RadishConcepts\PottingSoil\Traits\ArgsProperties;
  *
  * @link https://developer.wordpress.org/reference/functions/register_post_type/
  *
+ * @property-write array $labels
  * @property-write string $description
  * @property-write boolean $public
  * @property-write boolean $hierarchical
@@ -108,7 +109,7 @@ abstract class PostType implements PostTypeInterface
 	 *
 	 * @return array
 	 */
-	private function labels(): array
+	public function labels(): array
 	{
 		return [
 			'name'                      => $this->name,
