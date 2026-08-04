@@ -3,9 +3,7 @@
 namespace RadishConcepts\PottingSoil\Traits\Bases;
 
 use RadishConcepts\PottingSoil\Helpers\StringHelpers;
-use RadishConcepts\PottingSoil\Plugin;
 use RadishConcepts\PottingSoil\PottingSoil;
-use RadishConcepts\PottingSoil\Theme;
 
 trait ExtensionBase
 {
@@ -118,11 +116,11 @@ trait ExtensionBase
 	/**
 	 * Return the URL of the plugin or theme.
 	 *
-	 * @param string|null $append The string to append to the URL.
+	 * @param string $append The string to append to the URL.
 	 *
 	 * @return string
 	 */
-	public static function url( string $append = null ): string
+	public static function url( string $append = '' ): string
 	{
 		return trailingslashit( self::get_instance()->url ) . $append;
 	}
